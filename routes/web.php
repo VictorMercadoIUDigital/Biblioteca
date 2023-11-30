@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\autorController;
 use App\http\Controllers\LibroController;
+use App\http\Controllers\EjemplarController;
 
 
 /*
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/dashboard/autor',autorController::class);
     Route::resource('/dashboard/libro',LibroController::class);
+    Route::resource('/dashboard/ejemplar',EjemplarController::class);
 });
 
 require __DIR__.'/auth.php';

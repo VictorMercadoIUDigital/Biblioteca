@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('editoriales', function (Blueprint $table) {
+        Schema::create('ejemplars', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre',25);
+            $table->biginteger('IdLibro')->unsigned()->nullable();
+            $table->string('localizacion',100);
             $table->timestamps();
+             //Agregamos la clave foranea
+             $table->foreign('IdLibro')->references('id')->on('books')->onDelete('set null');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('editoriales');
+        Schema::dropIfExists('ejemplars');
     }
 };

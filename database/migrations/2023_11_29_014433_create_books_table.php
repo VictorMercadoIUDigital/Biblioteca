@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('autors', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('Cedula',30)->nullable();
-            $table->string('Nombre',100)->nullable();
+            $table->string('Titulo',100);
+            $table->integer('Paginas')->unsigned()->nullable();
+            $table->string('ISBN',20);
+            $table->biginteger('Editorial_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('autores');
+        Schema::dropIfExists('books');
     }
 };
